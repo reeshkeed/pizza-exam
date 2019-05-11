@@ -16,6 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
+            $table->decimal('price');
+            $table->boolean('is_active');
+            $table->boolean('is_completed');
             $table->timestamps();
         });
     }
