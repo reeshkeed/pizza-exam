@@ -22,11 +22,11 @@
 
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <router-link class="button is-white" to="/cart"><i class="fas fa-shopping-cart"></i></router-link>
-                <router-link class="button is-danger" to="/signup">Signup</router-link>
-                <router-link class="button is-danger is-outlined" to="/login">Login</router-link>
-              </div>
+              <router-link class="button is-white" to="/cart"><i class="fas fa-shopping-cart"></i></router-link>
+              <router-link class="button is-danger" to="/signup" v-if="!$root.user">Signup</router-link>
+              <router-link class="button is-danger is-outlined" to="/login" v-if="!$root.user">Login</router-link>
+              <h1 v-if="$root.user"><i class="fas fa-user-circle"></i> {{ $root.user.f_name }}</h1>
+              <a class="navbar-item" v-if="$root.user" @click="logout()">Logout</a>
             </div>
           </div>
         </div>
@@ -49,6 +49,16 @@ export default {
   computed: {
     isNavbarVisible () {
       return ['Login', 'Signup'].indexOf(this.$route.name) == -1
+    }
+  },
+
+  methods: {
+    logout () {
+      this.$http.post('/logout')
+        .then(response => {
+          this.$root.user = null;
+          this.$router.push('/menu')
+        });
     }
   }
 }

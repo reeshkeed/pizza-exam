@@ -11,6 +11,9 @@
     <App></App>
   </div>
 
+  <script>
+    var user = @json(Auth::user());
+  </script>
   <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

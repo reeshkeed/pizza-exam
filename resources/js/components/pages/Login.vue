@@ -11,32 +11,35 @@
                   Login
                 </h1>
 
-                <div class="field">
-                  <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="Email">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                      <i class="fas fa-check"></i>
-                    </span>
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-lock"></i>
-                    </span>
-                  </p>
-                </div>
-                <div class="field">
-                  <p class="control">
-                    <button class="button is-danger is-fullwidth">
-                      Login
-                    </button>
-                  </p>
-                </div>
+                <form @submit.prevent="submit()">
+                  <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                      <input class="input" type="email" placeholder="Email" v-model="user.email">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input class="input" type="password" placeholder="Password" v-model="user.password">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <div class="field">
+                    <p class="control">
+                      <button class="button is-danger is-fullwidth" type="submit">
+                        Login
+                      </button>
+                    </p>
+                  </div>
+                </form>
+
                 <div>
                   <p class="is-pulled-left">
                     Already have an account?
@@ -60,8 +63,27 @@
 
 <script>
 export default {
+  data: () => ({
+    user: {
+      email: null,
+      password: null,
+    }
+  }),
+
+  methods: {
+    submit () {
+      this.$http.post('/login', this.user)
+      .then(response => {
+        this.$root.user = response.data;
+        this.$router.push('/menu')
+      })
+      .catch(error => {
+        // Error
+      });
+    }
+  }
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="sass">
 </style>

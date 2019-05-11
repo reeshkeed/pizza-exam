@@ -14,24 +14,39 @@ class AuthController extends Controller
     {
         $data = $request->only(['email', 'password']);
 
-        return dd(Auth::attempt($data));
+        $status = Auth::attempt($data);
+
+        if (!$status) {
+            return response()->json(['message' => 'Invalid username and/or password'], 401);
+        }
+
+        return Auth::user();
     }
 
     public function register(Request $request)
     {
-      $data = $request->only([
-      'f_name',
-      's_name',
-      'email',
-      'password',
-      'phone',
-      'address'
-      ]);
+        $data = $request->only([
+        'f_name',
+        's_name',
+        'email',
+        'password',
+        'phone',
+        'address'
+        ]);
 
-      $data['role'] = 'customer';
+        $data['role'] = 'customer';
 
-      return User::create($data);
+        return User::create($data);
     }
 
+    public function user()
+    {
+        return Auth::user();
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+    }
 
 }

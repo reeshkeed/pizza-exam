@@ -11,5 +11,13 @@ Vue.prototype.$http = axios.create({
 const app = new Vue({
     el: '#app',
     router,
-    components: { App }
+    components: { App },
+
+    data: () => ({
+      user: null
+    }),
+
+    created () {
+      this.user = window.user;
+    }
 });
