@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav class="navbar has-text-white" role="navigation" aria-label="main navigation">
+    <!-- Navbar Starts Here -->
+    <nav class="navbar has-text-white" role="navigation" aria-label="main navigation" v-if="isNavbarVisible">
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
@@ -16,7 +17,6 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <router-link class="navbar-item" to="/">Home</router-link>
             <router-link class="navbar-item" to="/menu">Menu</router-link>
           </div>
 
@@ -32,10 +32,11 @@
         </div>
       </div>
     </nav>
+    <!-- Navbar Ends Here -->
 
-    <div class="container">
-      <router-view/>
-    </div>
+    <!-- Views Render Here -->
+    <router-view/>
+
   </div>
 </template>
 
@@ -43,6 +44,12 @@
 export default {
   mounted() {
     console.log('Component mounted.')
+  },
+
+  computed: {
+    isNavbarVisible () {
+      return ['Login', 'Signup'].indexOf(this.$route.name) == -1
+    }
   }
 }
 </script>

@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/pages/Home";
 import Login from "@/components/pages/Login"
 import Menu from "@/components/pages/Menu"
 import Cart from "@/components/pages/Cart"
@@ -12,11 +11,6 @@ export default new Router({
   mode: "history",
 
   routes: [
-    {
-      path: "/",
-      name: "Home",
-      component: Home
-    },
     {
       path: "/login",
       name: "Login",
