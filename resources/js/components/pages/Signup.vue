@@ -11,60 +11,63 @@
                   Signup
                 </h1>
 
-                <div class="field">
-                  <label class="label">First Name</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="First Name">
+                <form @submit.prevent="submit()">
+                  <div class="field">
+                    <label class="label">First Name</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="First Name" v-model="user.f_name">
+                    </div>
                   </div>
-                </div>
 
-                <div class="field">
-                  <label class="label">Last Name</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Last Name">
+                  <div class="field">
+                    <label class="label">Last Name</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Last Name" v-model="user.s_name">
+                    </div>
                   </div>
-                </div>
 
-                <div class="field">
-                  <label class="label">Email</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Email">
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Email" v-model="user.email">
+                    </div>
                   </div>
-                </div>
 
-                <div class="field">
-                  <label class="label">Password</label>
-                  <p class="control">
-                    <input class="input" type="password" placeholder="Password">
-                  </p>
-                </div>
-
-                <div class="field">
-                  <label class="label">Phone Number</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Phone Number">
+                  <div class="field">
+                    <label class="label">Password</label>
+                    <p class="control">
+                      <input class="input" type="password" placeholder="Password" v-model="user.password">
+                    </p>
                   </div>
-                </div>
 
-                <div class="field">
-                  <label class="label">Address</label>
+                  <div class="field">
+                    <label class="label">Phone Number</label>
+                    <div class="control">
+                      <input class="input" type="text" placeholder="Phone Number" v-model="user.phone">
+                    </div>
+                  </div>
 
-                  <div class="field-body">
-                    <div class="field">
-                      <div class="control">
-                        <textarea class="textarea" placeholder="Complete Address"></textarea>
+                  <div class="field">
+                    <label class="label">Address</label>
+
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" placeholder="Complete Address" v-model="user.address"></textarea>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="field">
-                  <p class="control">
-                    <button class="button is-danger is-fullwidth">
-                      Login
-                    </button>
-                  </p>
-                </div>
+                  <div class="field">
+                    <p class="control">
+                      <button class="button is-danger is-fullwidth" type="submit">
+                        Login
+                      </button>
+                    </p>
+                  </div>
+                </form>
+
                 <div>
                   <p class="is-pulled-left">
                     Already have an account?
@@ -76,10 +79,6 @@
             </div>
           </div>
 
-          <div class="form-group">
-
-          </div>
-
         </div>
       </div>
     </section>
@@ -88,6 +87,25 @@
 
 <script>
 export default {
+  data: () => ({
+    user: {
+      f_name: null,
+      s_name: null,
+      email: null,
+      password: null,
+      phone: null,
+      address: null,
+    }
+  }),
+
+  methods: {
+    submit () {
+      this.$http.post('/register', this.user)
+        .then(response => {
+          alert('Registered');
+        });
+    }
+  }
 }
 </script>
 
