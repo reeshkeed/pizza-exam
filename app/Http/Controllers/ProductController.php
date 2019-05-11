@@ -10,10 +10,19 @@ class ProductController extends Controller
 {
     public function get(Request $request)
     {
-        $type = $request->input('type');
         $size = $request->input('size');
+        $type = $request->input('type');
 
-        return Product::where('type', '=', $type)
-            ->where('size', '=', $size)->get();
+        $query = Product::query();
+
+        if ($size) {
+            $query->where('size', '=', $size);
+        }
+
+        if ($type) {
+            $query->where('type', '=', $type);
+        }
+
+        return $query->get();
     }
 }

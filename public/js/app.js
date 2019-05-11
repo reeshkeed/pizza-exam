@@ -1994,7 +1994,100 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      pizza: {
+        type: null,
+        size: null
+      },
+      products: []
+    };
+  },
+  computed: {
+    groupedProducts: function groupedProducts() {
+      var _this = this;
+
+      var output = [];
+
+      var _loop = function _loop(i) {
+        var product = _this.products[i];
+        var index = output.findIndex(function (o) {
+          return o.type == product.type;
+        });
+
+        if (index == -1) {
+          output.push({
+            type: product.type,
+            products: [product]
+          });
+          return "continue";
+        }
+
+        output[index].products.push(product);
+      };
+
+      for (var i = 0; i < this.products.length; i++) {
+        var _ret = _loop(i);
+
+        if (_ret === "continue") continue;
+      }
+
+      return output;
+    }
+  },
+  watch: {
+    pizza: {
+      handler: function handler() {
+        if (this.pizza.type && this.pizza.size) {
+          this.getProducts(this.pizza.size);
+          return;
+        }
+      },
+      deep: true
+    }
+  },
+  methods: {
+    getProducts: function getProducts(size) {
+      var _this2 = this;
+
+      var params = {
+        size: size
+      };
+      this.$http.get('/products', {
+        params: params
+      }).then(function (response) {
+        return _this2.products = response.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -3668,30 +3761,74 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "menu" }, [
-      _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "menu" }, [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
         _c("h1", { staticClass: "title" }, [_vm._v("Type")]),
         _vm._v(" "),
         _c("div", { staticClass: "control" }, [
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.type,
+                  expression: "pizza.type"
+                }
+              ],
+              attrs: { type: "radio", name: "type", value: "whole" },
+              domProps: { checked: _vm._q(_vm.pizza.type, "whole") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "type", "whole")
+                }
+              }
+            }),
             _vm._v("\n        Whole\n      ")
           ]),
           _vm._v(" "),
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.type,
+                  expression: "pizza.type"
+                }
+              ],
+              attrs: { type: "radio", name: "type", value: "half" },
+              domProps: { checked: _vm._q(_vm.pizza.type, "half") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "type", "half")
+                }
+              }
+            }),
             _vm._v("\n        Half\n      ")
           ]),
           _vm._v(" "),
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.type,
+                  expression: "pizza.type"
+                }
+              ],
+              attrs: { type: "radio", name: "type", value: "4quarters" },
+              domProps: { checked: _vm._q(_vm.pizza.type, "4quarters") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "type", "4quarters")
+                }
+              }
+            }),
             _vm._v("\n        4 Quarters\n      ")
           ])
         ]),
@@ -3700,24 +3837,121 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "control" }, [
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.size,
+                  expression: "pizza.size"
+                }
+              ],
+              attrs: { type: "radio", name: "size", value: "10" },
+              domProps: { checked: _vm._q(_vm.pizza.size, "10") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "size", "10")
+                }
+              }
+            }),
             _vm._v("\n        10\n      ")
           ]),
           _vm._v(" "),
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.size,
+                  expression: "pizza.size"
+                }
+              ],
+              attrs: { type: "radio", name: "size", value: "14" },
+              domProps: { checked: _vm._q(_vm.pizza.size, "14") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "size", "14")
+                }
+              }
+            }),
             _vm._v("\n        14\n      ")
           ]),
           _vm._v(" "),
           _c("label", { staticClass: "radio" }, [
-            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pizza.size,
+                  expression: "pizza.size"
+                }
+              ],
+              attrs: { type: "radio", name: "size", value: "18" },
+              domProps: { checked: _vm._q(_vm.pizza.size, "18") },
+              on: {
+                change: function($event) {
+                  return _vm.$set(_vm.pizza, "size", "18")
+                }
+              }
+            }),
             _vm._v("\n        18\n      ")
           ])
-        ])
-      ])
-    ])
-  }
-]
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.groupedProducts, function(entry, i) {
+          return _c("div", { key: i }, [
+            _c("h1", { staticClass: "title" }, [
+              _vm._v("Type: " + _vm._s(entry.type))
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "columns is-multiline" },
+              _vm._l(entry.products, function(product, x) {
+                return _c(
+                  "div",
+                  { key: x, staticClass: "column is-one-fifth" },
+                  [
+                    _c("div", { staticClass: "card" }, [
+                      _c("div", { staticClass: "card-content" }, [
+                        _c("p", { staticClass: "title" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(product.name) +
+                              "\n              "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "subtitle" }, [
+                          _vm._v(
+                            "\n                " +
+                              _vm._s(product.price) +
+                              "\n              "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { staticClass: "button is-success is-fullwidth" },
+                          [_vm._v("Add to cart")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
