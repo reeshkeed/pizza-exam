@@ -1960,6 +1960,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -3642,7 +3676,45 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "menu" }, [
-      _c("h1", { staticClass: "title" }, [_vm._v("Menu")])
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "title" }, [_vm._v("Type")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        Whole\n      ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        Half\n      ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        4 Quarters\n      ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("h1", { staticClass: "title" }, [_vm._v("Size")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "control" }, [
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        10\n      ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        14\n      ")
+          ]),
+          _vm._v(" "),
+          _c("label", { staticClass: "radio" }, [
+            _c("input", { attrs: { type: "radio", name: "type" } }),
+            _vm._v("\n        18\n      ")
+          ])
+        ])
+      ])
     ])
   }
 ]
