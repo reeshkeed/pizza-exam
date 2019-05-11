@@ -23,9 +23,8 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-danger">
-                  <strong>Sign up</strong>
-                </a>
+                <router-link class="button is-white" to="/cart"><i class="fas fa-shopping-cart"></i></router-link>
+                <router-link class="button is-danger" to="/signup">Signup</router-link>
                 <router-link class="button is-danger is-outlined" to="/login">Login</router-link>
               </div>
             </div>
