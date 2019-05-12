@@ -12,6 +12,11 @@ class OrderItem extends Model
      * @var array
      */
     protected $fillable = [
-        'order_id', 'type', 'size', 'price',
+        'order_id', 'kind', 'size', 'price',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(OrderItemProduct::class);
+    }
 }
