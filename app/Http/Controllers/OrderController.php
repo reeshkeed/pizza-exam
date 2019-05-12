@@ -13,7 +13,8 @@ class OrderController extends Controller
     public function active() {
         $user = Auth::user();
 
-        return Order::getActiveOrder($user->id);
+        return Order::getActiveOrder($user->id)
+          ->load('items', 'items.products', 'items.products.product');
     }
 
     public function addItem(Request $request, Order $order)

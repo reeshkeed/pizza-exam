@@ -4,6 +4,7 @@ import Login from "@/components/pages/Login"
 import Menu from "@/components/pages/Menu"
 import Cart from "@/components/pages/Cart"
 import Signup from "@/components/pages/Signup"
+import Checkout from "@/components/pages/Checkout"
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/signup",
       name: "Signup",
       component: Signup
+    },
+    {
+      path: "/checkout",
+      name: "Checkout",
+      component: Checkout
     }
   ]
 });

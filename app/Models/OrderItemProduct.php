@@ -14,4 +14,9 @@ class OrderItemProduct extends Model
     protected $fillable = [
         'cart_item_id', 'product_id', 'amount',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

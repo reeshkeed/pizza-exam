@@ -62,7 +62,7 @@
                   <div class="field">
                     <p class="control">
                       <button class="button is-danger is-fullwidth" type="submit">
-                        Login
+                        Signup
                       </button>
                     </p>
                   </div>
