@@ -14,4 +14,8 @@ class Product extends Model
     protected $fillable = [
         'type', 'name', 'size', 'price',
     ];
+
+    protected $casts = [
+        'price' => 'float'
+    ];
 }
