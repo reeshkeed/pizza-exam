@@ -1940,6 +1940,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2339,6 +2344,8 @@ __webpack_require__.r(__webpack_exports__);
       return this.typesAllowed.indexOf(type) == -1 || !this.canAddToCart && type != 'Toppings';
     },
     checkout: function checkout() {
+      var _this4 = this;
+
       var data = {
         kind: this.pizza.kind,
         size: this.pizza.size,
@@ -2347,7 +2354,7 @@ __webpack_require__.r(__webpack_exports__);
         })
       };
       this.$http.post("/orders/".concat(this.orderId), data).then(function (response) {
-        alert('checked out');
+        _this4.$router.push('/checkout');
       });
     }
   }
@@ -3939,136 +3946,150 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "column" }, [
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.submit()
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("First Name")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "control" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user.f_name,
-                        expression: "user.f_name"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: { type: "text", placeholder: "First Name" },
-                    domProps: { value: _vm.user.f_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.user, "f_name", $event.target.value)
-                      }
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-content" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.submit()
                     }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Last Name")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "control" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user.s_name,
-                        expression: "user.s_name"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: { type: "text", placeholder: "Last Name" },
-                    domProps: { value: _vm.user.s_name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.user, "s_name", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Phone Number")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "control" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.user.phone,
-                        expression: "user.phone"
-                      }
-                    ],
-                    staticClass: "input",
-                    attrs: { type: "text", placeholder: "Phone Number" },
-                    domProps: { value: _vm.user.phone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.user, "phone", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "field" }, [
-                _c("label", { staticClass: "label" }, [_vm._v("Address")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "field-body" }, [
+                  }
+                },
+                [
                   _c("div", { staticClass: "field" }, [
+                    _c("label", { staticClass: "label" }, [
+                      _vm._v("First Name")
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "control" }, [
-                      _c("textarea", {
+                      _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.user.address,
-                            expression: "user.address"
+                            value: _vm.user.f_name,
+                            expression: "user.f_name"
                           }
                         ],
-                        staticClass: "textarea",
-                        attrs: { placeholder: "Complete Address" },
-                        domProps: { value: _vm.user.address },
+                        staticClass: "input",
+                        attrs: { type: "text", placeholder: "First Name" },
+                        domProps: { value: _vm.user.f_name },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.$set(_vm.user, "address", $event.target.value)
+                            _vm.$set(_vm.user, "f_name", $event.target.value)
                           }
                         }
                       })
                     ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
-            ]
-          )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field" }, [
+                    _c("label", { staticClass: "label" }, [
+                      _vm._v("Last Name")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "control" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.s_name,
+                            expression: "user.s_name"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: { type: "text", placeholder: "Last Name" },
+                        domProps: { value: _vm.user.s_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.user, "s_name", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field" }, [
+                    _c("label", { staticClass: "label" }, [
+                      _vm._v("Phone Number")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "control" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.phone,
+                            expression: "user.phone"
+                          }
+                        ],
+                        staticClass: "input",
+                        attrs: { type: "text", placeholder: "Phone Number" },
+                        domProps: { value: _vm.user.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.user, "phone", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "field" }, [
+                    _c("label", { staticClass: "label" }, [_vm._v("Address")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "field-body" }, [
+                      _c("div", { staticClass: "field" }, [
+                        _c("div", { staticClass: "control" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.user.address,
+                                expression: "user.address"
+                              }
+                            ],
+                            staticClass: "textarea",
+                            attrs: { placeholder: "Complete Address" },
+                            domProps: { value: _vm.user.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.user,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
+            ])
+          ])
         ])
       ])
     ])
@@ -4087,7 +4108,7 @@ var staticRenderFns = [
             staticClass: "button is-danger is-fullwidth",
             attrs: { type: "submit" }
           },
-          [_vm._v("\n                Checkout\n              ")]
+          [_vm._v("\n                    Complete Payment\n                  ")]
         )
       ])
     ])

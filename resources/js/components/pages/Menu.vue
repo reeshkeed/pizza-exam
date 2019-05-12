@@ -240,7 +240,7 @@ export default {
 
       this.$http.post(`/orders/${this.orderId}`, data)
         .then(response => {
-          alert('checked out');
+          this.$router.push('/checkout');
         });
     }
   }

@@ -33,49 +33,54 @@
         </div>
 
         <div class="column">
-          <form @submit.prevent="submit()">
-            <div class="field">
-              <label class="label">First Name</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="First Name" v-model="user.f_name">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Last Name</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Last Name" v-model="user.s_name">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Phone Number</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="Phone Number" v-model="user.phone">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Address</label>
-
-              <div class="field-body">
+          <div class="card">
+            <div class="card-content">
+              <form @submit.prevent="submit()">
                 <div class="field">
+                  <label class="label">First Name</label>
                   <div class="control">
-                    <textarea class="textarea" placeholder="Complete Address" v-model="user.address"></textarea>
+                    <input class="input" type="text" placeholder="First Name" v-model="user.f_name">
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="field">
-              <p class="control">
-                <button class="button is-danger is-fullwidth" type="submit">
-                  Checkout
-                </button>
-              </p>
+                <div class="field">
+                  <label class="label">Last Name</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Last Name" v-model="user.s_name">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Phone Number</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Phone Number" v-model="user.phone">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Address</label>
+
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <textarea class="textarea" placeholder="Complete Address" v-model="user.address"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <p class="control">
+                    <button class="button is-danger is-fullwidth" type="submit">
+                      Complete Payment
+                    </button>
+                  </p>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
