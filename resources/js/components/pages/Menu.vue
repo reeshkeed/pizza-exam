@@ -97,7 +97,7 @@
                 {{ totalPrice }}
               </p>
 
-              <button class="button checkout is-danger is-fullwidth">Checkout</button>
+              <button @click="checkout()" class="button checkout is-danger is-fullwidth">Checkout</button>
             </div>
           </div>
         </div>
@@ -116,7 +116,8 @@ export default {
       items: [],
     },
 
-    products: []
+    products: [],
+    orderId: null
   }),
 
   computed: {
@@ -204,6 +205,11 @@ export default {
     }
   },
 
+  mounted () {
+    this.$http.get('/orders/active')
+      .then(response => this.orderId = response.data.id)
+  },
+
   methods: {
     getProducts (size) {
       const params = { size };
@@ -223,9 +229,20 @@ export default {
     isDisabled (type) {
       return this.typesAllowed.indexOf(type) == -1 ||
         (!this.canAddToCart && type != 'Toppings');
+    },
+
+    checkout () {
+      let data = {
+        kind: this.pizza.kind,
+        size: this.pizza.size,
+        items: this.pizza.items.map(p => p.id)
+      };
+
+      this.$http.post(`/orders/${this.orderId}`, data)
+        .then(response => {
+          alert('checked out');
+        });
     }
-
-
   }
 }
 </script>

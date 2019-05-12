@@ -2071,7 +2071,8 @@ __webpack_require__.r(__webpack_exports__);
         size: null,
         items: []
       },
-      products: []
+      products: [],
+      orderId: null
     };
   },
   computed: {
@@ -2158,9 +2159,16 @@ __webpack_require__.r(__webpack_exports__);
       deep: true
     }
   },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.$http.get('/orders/active').then(function (response) {
+      return _this2.orderId = response.data.id;
+    });
+  },
   methods: {
     getProducts: function getProducts(size) {
-      var _this2 = this;
+      var _this3 = this;
 
       var params = {
         size: size
@@ -2168,7 +2176,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$http.get('/products', {
         params: params
       }).then(function (response) {
-        return _this2.products = response.data;
+        return _this3.products = response.data;
       });
     },
     addToCart: function addToCart(product) {
@@ -2182,6 +2190,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     isDisabled: function isDisabled(type) {
       return this.typesAllowed.indexOf(type) == -1 || !this.canAddToCart && type != 'Toppings';
+    },
+    checkout: function checkout() {
+      var data = {
+        kind: this.pizza.kind,
+        size: this.pizza.size,
+        items: this.pizza.items.map(function (p) {
+          return p.id;
+        })
+      };
+      this.$http.post("/orders/".concat(this.orderId), data).then(function (response) {
+        alert('checked out');
+      });
     }
   }
 });
@@ -4173,7 +4193,14 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "button",
-                  { staticClass: "button checkout is-danger is-fullwidth" },
+                  {
+                    staticClass: "button checkout is-danger is-fullwidth",
+                    on: {
+                      click: function($event) {
+                        return _vm.checkout()
+                      }
+                    }
+                  },
                   [_vm._v("Checkout")]
                 )
               ],
