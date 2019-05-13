@@ -71,4 +71,8 @@ class Order extends Model
         return $orderItem;
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
 }

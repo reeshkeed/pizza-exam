@@ -5,6 +5,7 @@ import Menu from "@/components/pages/Menu"
 import Cart from "@/components/pages/Cart"
 import Signup from "@/components/pages/Signup"
 import Checkout from "@/components/pages/Checkout"
+import Admin from "@/components/pages/Admin"
 
 Vue.use(Router);
 
@@ -36,6 +37,11 @@ export default new Router({
       path: "/checkout",
       name: "Checkout",
       component: Checkout
+    },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: Admin
     }
   ]
 });

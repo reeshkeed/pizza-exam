@@ -102,7 +102,7 @@ export default {
     submit () {
       this.$http.post('/register', this.user)
         .then(response => {
-          alert('Registered');
+          this.$router.push('/login');
         });
     }
   }

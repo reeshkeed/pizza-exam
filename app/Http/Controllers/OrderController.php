@@ -30,4 +30,9 @@ class OrderController extends Controller
     {
         return $order->load('items', 'items.products');
     }
+
+    public function all()
+    {
+        return Order::with('items', 'items.products', 'items.products.product', 'user')->get();
+    }
 }

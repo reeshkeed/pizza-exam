@@ -51,10 +51,6 @@
             </div>
           </div>
 
-          <div class="form-group">
-
-          </div>
-
         </div>
       </div>
     </section>
@@ -75,6 +71,13 @@ export default {
       this.$http.post('/login', this.user)
       .then(response => {
         this.$root.user = response.data;
+
+        if (response.data.role == 'admin') {
+          this.$router.push('/admin')
+
+          return;
+        }
+
         this.$router.push('/menu')
       })
       .catch(error => {

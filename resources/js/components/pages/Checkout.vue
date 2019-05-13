@@ -147,7 +147,7 @@ export default {
     completePayment () {
       this.$http.post(`/orders/${this.orderId}/checkout`)
         .then(response => {
-          alert('Payment Completed');
+          this.$router.push('/menu');
         });
     }
   }
