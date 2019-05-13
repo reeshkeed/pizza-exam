@@ -26,7 +26,7 @@
                 Total
               </p>
               <p>
-                {{ totalPrice }}
+                ₱{{ totalPrice }}
               </p>
             </div>
           </div>
@@ -35,7 +35,7 @@
         <div class="column">
           <div class="card">
             <div class="card-content">
-              <form @submit.prevent="submit()">
+              <form @submit.prevent="completePayment()">
                 <div class="field">
                   <label class="label">First Name</label>
                   <div class="control">
@@ -100,7 +100,9 @@ export default {
       kind: null,
       size: null,
       items: []
-    }
+    },
+
+    orderId: null
   }),
 
   mounted () {
@@ -138,6 +140,14 @@ export default {
           this.pizza.kind = orderItem.kind;
           this.pizza.size = orderItem.size;
           this.pizza.items = orderItem.products.map(p => p.product);
+          this.orderId = response.data.id;
+        });
+    },
+
+    completePayment () {
+      this.$http.post(`/orders/${this.orderId}/checkout`)
+        .then(response => {
+          alert('Payment Completed');
         });
     }
   }

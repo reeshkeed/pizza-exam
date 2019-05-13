@@ -1958,7 +1958,8 @@ __webpack_require__.r(__webpack_exports__);
         kind: null,
         size: null,
         items: []
-      }
+      },
+      orderId: null
     };
   },
   mounted: function mounted() {
@@ -1993,6 +1994,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.pizza.items = orderItem.products.map(function (p) {
           return p.product;
         });
+        _this.orderId = response.data.id;
+      });
+    },
+    completePayment: function completePayment() {
+      this.$http.post("/orders/".concat(this.orderId, "/checkout")).then(function (response) {
+        alert('Payment Completed');
       });
     }
   }
@@ -3934,7 +3941,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", [
                   _vm._v(
-                    "\n              " +
+                    "\n              ₱" +
                       _vm._s(_vm.totalPrice) +
                       "\n            "
                   )
@@ -3954,7 +3961,7 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.submit()
+                      return _vm.completePayment()
                     }
                   }
                 },

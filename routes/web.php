@@ -8,5 +8,6 @@ Route::get('/products', 'ProductController@get');
 Route::get('/orders/active', 'OrderController@active');
 Route::post('/orders/{order}', 'OrderController@addItem');
 Route::get('/orders/{order}', 'OrderController@getOrder');
+Route::post('/orders/{order}/checkout', 'CheckoutController@updateOrder');
 Route::get('/{any}', 'SpaController')
     ->where('any', '^.*$')  ;
