@@ -2,7 +2,6 @@ import Vue from "vue";
 import Router from "vue-router";
 import Login from "@/components/pages/Login"
 import Menu from "@/components/pages/Menu"
-import Cart from "@/components/pages/Cart"
 import Signup from "@/components/pages/Signup"
 import Checkout from "@/components/pages/Checkout"
 import Admin from "@/components/pages/Admin"
@@ -22,11 +21,6 @@ export default new Router({
       path: "/menu",
       name: "Menu",
       component: Menu
-    },
-    {
-      path: "/cart",
-      name: "Cart",
-      component: Cart
     },
     {
       path: "/signup",

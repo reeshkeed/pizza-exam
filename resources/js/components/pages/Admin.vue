@@ -13,7 +13,7 @@
 
             <h2>User: {{ order.user.f_name }} {{ order.user.s_name }}</h2>
 
-            <h3>Item</h3>
+            <h3 class="cart-item-name">Item(s)</h3>
 
             <div
               v-for="(item, x) in order.items"
